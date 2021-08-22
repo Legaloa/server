@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 var corsOptions = {
-  origin: "https://legaldata-client.herokuapp.com/"
+  origin: "https://legaldata-client.herokuapp.com"
 };
 
 app.use(cors(corsOptions));
