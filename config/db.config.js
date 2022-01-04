@@ -1,5 +1,5 @@
-module.exports = {
-  HOST: "localhost",//"ns120.hostgator.mx",
+module.exports = { //test
+  HOST: "localhost",//"ns120.hostgator.mx", 
   USER: "root",//"andantvc_user",
   PASSWORD: "",//"waC{NpXeLMyg", @cpK@uCX@GS4cGp
   DB: "legaldata",//andantvc_legaldata
