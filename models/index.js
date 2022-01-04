@@ -31,6 +31,7 @@ db.document = require("../models/document.model.js")(sequelize, Sequelize);
 db.domaine = require("../models/domaine.model.js")(sequelize, Sequelize);
 db.type = require("../models/type.model.js")(sequelize, Sequelize);
 db.organisme = require("../models/organisme.model.js")(sequelize, Sequelize);
+db.status = require("../models/status.model.js")(sequelize, Sequelize);
 
 // create roles table
 
@@ -46,6 +47,13 @@ db.user.belongsToMany(db.role, {
 });
 
 db.ROLES = ["admin", "user"];
+
+// add foreignkey to user
+db.status.hasMany(db.user, { as: "user" });
+db.user.belongsTo(db.status, {
+  foreignKey: "statusId",
+  as: "status",
+});
 
 
 // add foreignkey to document

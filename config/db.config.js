@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "ns120.hostgator.mx",//"ns120.hostgator.mx",
-  USER: "andantvc_user",//"andantvc_user",
-  PASSWORD: "waC{NpXeLMyg",//"waC{NpXeLMyg",
-  DB: "andantvc_legaldata",
+  HOST: "localhost",//"ns120.hostgator.mx",
+  USER: "root",//"andantvc_user",
+  PASSWORD: "",//"waC{NpXeLMyg", @cpK@uCX@GS4cGp
+  DB: "legaldata",//andantvc_legaldata
     dialect: "mysql",
     pool: {
       max: 5,

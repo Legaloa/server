@@ -1,5 +1,6 @@
 const { verifySignUp } = require("../middleware");
 const controller = require("../controllers/auth.controller");
+var router = require("express").Router();
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -20,4 +21,7 @@ module.exports = function(app) {
   );
 
   app.post("/api/auth/signin", controller.signin);
+    // Update a user with username
+  router.put("/:username", controller.update);
+  app.use('/api/users', router);
 };

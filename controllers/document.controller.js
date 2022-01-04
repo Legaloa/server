@@ -74,6 +74,7 @@ exports.create = (req, res) => {
           { dateVigueur: dateVigueur }
         ]}
       }else{
+        console.log("no está vacio");
         var where ={
         [Op.or]: [
           {condition},

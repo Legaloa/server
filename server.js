@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 var corsOptions = {
-  origin: "https://legaldata-client.herokuapp.com"
+  origin: "http://localhost:8081/" //"https://legaldata-client.herokuapp.com"
 };
 
 app.use(cors(corsOptions));
@@ -21,12 +21,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require('./models');
 const Role = db.role;
 
-db.sequelize.sync();
+//Update table user
+//const User = db.user;
+//db.sequelize.sync();
+//User.sync({ alter: true });
+
 // force: true will drop the table if it already exists
+/*
  db.sequelize.sync({force: true}).then(() => {
    console.log('Drop and Resync Database with { force: true }');
    initial();
- });
+ });*/
 
 // simple route
 app.get("/", (req, res) => {
@@ -41,6 +46,7 @@ require('./routes/article.routes')(app);
 require('./routes/type.routes')(app);
 require('./routes/domaine.routes')(app);
 require('./routes/organisme.routes')(app);
+require('./routes/status.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
