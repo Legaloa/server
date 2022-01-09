@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cp1648233p04/test/
+    - export DEPLOYPATH=/home/cp1648233p04/new/
     - /bin/cp -R * $DEPLOYPATH
