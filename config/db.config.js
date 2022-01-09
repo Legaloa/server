@@ -1,8 +1,8 @@
 module.exports = { //test
-  HOST: "localhost",//"ns120.hostgator.mx", 
-  USER: "root",//"andantvc_user",
-  PASSWORD: "",//"waC{NpXeLMyg", @cpK@uCX@GS4cGp
-  DB: "legaldata",//andantvc_legaldata
+  HOST: "legaloa.com",//"localhost",//"ns120.hostgator.mx", 
+  USER: "cp1648233p04_user",//"root",//"andantvc_user",
+  PASSWORD: "@cpK@uCX@GS4cGp",//"waC{NpXeLMyg", @cpK@uCX@GS4cGp
+  DB: "cp1648233p04_legaldata", //"legaldata",//andantvc_legaldata
     dialect: "mysql",
     pool: {
       max: 5,
