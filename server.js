@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 //ya lo borré mija
 var corsOptions = {
-  origin: "http://localhost:8081/" //"https://legaldata-client.herokuapp.com"
+  origin: "https://legaloa.herokuapp.com/" //"https://legaldata-client.herokuapp.com"
 };
 
 app.use(cors(corsOptions));
@@ -53,6 +53,8 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+console.log("valor muja"+process);
 
 
 // CREATE TABLES
