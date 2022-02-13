@@ -51,43 +51,47 @@ exports.create = (req, res) => {
 
   exports.findAll = (req, res) => {
 
-    console.log("entra al find all doc");
-
-    const intituleArticle = req.query.intituleArticle;
+    console.log("Busqueda de documento");
+    const intituleDoc = req.query.intituleDoc;
     const typeId = req.query.typeId;
     const organismeId = req.query.organismeId;
     const domaineId = req.query.domaineId;
     const dateVigueur = req.query.dateVigueur;
-    
-    console.log(intituleArticle);
-    console.log(dateVigueur);
 
-    var condition = intituleArticle ? Sequelize.literal(`MATCH (intituleArticle) AGAINST('%${intituleArticle}%' IN NATURAL LANGUAGE MODE)`) : null;
+    var strToDate = new Date(dateVigueur);
 
-      
-      if (condition == null) {
-       var where = {
-        [Op.or]: [
-          { typeId: typeId},
-          { organismeId: organismeId },
-          { domaineId: domaineId },
-          { dateVigueur: dateVigueur }
-        ]}
-      }else{
-        console.log("no está vacio");
-        var where ={
-        [Op.or]: [
-          {condition},
-          { typeId: typeId},
-          { organismeId: organismeId },
-          { domaineId: domaineId },
-          { dateVigueur: dateVigueur }
-        ]}
-      }
+    strToDate = strToDate.getFullYear();
+    if(!strToDate){
+      strToDate = "";
+    }
+ 
+    var condition = intituleDoc ? Sequelize.literal(`MATCH (intituleDoc) AGAINST('%${intituleDoc}%' IN NATURAL LANGUAGE MODE)`) : null;
+    var conditionYear = Sequelize.where(Sequelize.fn('YEAR', Sequelize.col('dateVigueur')), strToDate);
+   console.log(condition);
 
-    //SELECT d.intituleDoc, d.dateAdoption, t.type, o.name, do.domaine, a.intituleArticle FROM `docs` AS d JOIN `types` as t ON t.id = d.typeId JOIN `organismes` AS o ON d.organismeId = o.id JOIN `domaines` AS do ON d.domaineId = do.id JOIN `articles` AS a ON a.docId = d.id WHERE MATCH(a.intituleArticle) AGAINST ("1") OR d.typeId = 1 OR d.organismeId = 1 OR d.domaineId = 9 OR d.dateVigueur = "2021-07-12"
-  
-    Document.findAll(
+    if (condition == null) {
+      console.log("sin titulo");
+      var where = {
+       [Op.or]: [
+         { typeId: typeId}, 
+         { organismeId: organismeId },
+         { domaineId: domaineId },
+         {conditionYear}
+         
+       ]}
+     }else{
+      console.log("con titulo");
+       var where ={
+       [Op.or]: [
+         {condition},
+         { typeId: typeId},
+         { organismeId: organismeId },
+         { domaineId: domaineId },
+         {conditionYear}
+       ]}
+     }
+
+     Document.findAll(
       
       {   
       include: [
