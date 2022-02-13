@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload');
 
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "https://legaloa.herokuapp.com/"
 };
 
 app.use(cors(corsOptions));
@@ -45,7 +45,7 @@ require('./routes/status.routes')(app);
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Legaloa application." });
 });
 
 // set port, listen for requests
