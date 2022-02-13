@@ -54,7 +54,8 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-app.use(express.static('public'));
+app.use(express.static('public')); //to access the files in public folder
+app.use(cors());
 
 /*
 // CREATE TABLES
