@@ -1,8 +1,8 @@
 module.exports = { //test
-  HOST: "legaloa.com",
-  USER: "cp1648233p04_user",
-  PASSWORD: "@cpK@uCX@GS4cGp",
-  DB: "cp1648233p04_legaldata", 
+  HOST: "",
+  USER: "",
+  PASSWORD: "",
+  DB: "", 
     dialect: "mysql",
     pool: {
       max: 5,
